@@ -1,0 +1,18 @@
+
+machine:
+  pre:
+    - curl -sSL https://s3.amazonaws.com/circle-downloads/install-circleci-docker.sh | bash -s -- 1.10.0
+  services:
+    - docker
+  environment:
+    DOCKER_API_VERSION: '1.22'
+
+dependencies:
+  cache_directories: [vendor]
+  override:
+    - "curl -sSL -o dobi \
+        https://github.com/dnephin/dobi/releases/download/v0.7/dobi-linux"
+    - "chmod +x dobi"
+
+test:
+  override: [./dobi deps all]
