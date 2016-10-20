@@ -1,3 +1,8 @@
+/*
+Package path is used to track the path to a value within a config file.
+
+Paths can be used to create helpful errors messages.
+*/
 package path
 
 import (

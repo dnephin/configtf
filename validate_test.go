@@ -1,4 +1,4 @@
-package tform
+package configtf
 
 import (
 	"fmt"

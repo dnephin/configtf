@@ -202,7 +202,7 @@ func getStructComments(name string, path string) (*structComments, error) {
 }
 
 func getTypeName(name string, comments *structComments) string {
-	return comments.comment.Get("name", tform.TitleCaseToDash(name))
+	return comments.comment.Get("name", configtf.TitleCaseToDash(name))
 }
 
 func embededFields(structType reflect.Type) ([]ConfigField, error) {
@@ -232,8 +232,8 @@ func buildConfigFields(
 		}
 
 		comment := comments.fields[structField.Name]
-		fieldTags := tform.NewFieldTags(
-			structField.Name, structField.Tag.Get(tform.StructTagKey))
+		fieldTags := configtf.NewFieldTags(
+			structField.Name, structField.Tag.Get(configtf.StructTagKey))
 		field := ConfigField{
 			Name:        fieldTags.Name,
 			IsRequired:  fieldTags.IsRequired,
